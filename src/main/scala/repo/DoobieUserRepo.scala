@@ -12,7 +12,7 @@ class DoobieUserRepo[F[_]: Monad](xa: Transactor[F]) extends UserRepo[F] {
 
   implicit val x: Meta[LocalDate] = DateMeta.xmap(
     date => new LocalDate(date.getTime), //FIXME: 1988->3888
-    b => new java.sql.Date(b.getYear, b.getMonthOfYear, b.getDayOfMonth)
+    b => new java.sql.Date(b.getYear - 1900, b.getMonthOfYear, b.getDayOfMonth)
   )
 
   override def add(user: User): F[Boolean] = {

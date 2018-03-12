@@ -19,7 +19,7 @@ object Main extends App {
   val doobieUserRepo: DoobieUserRepo[Task] = new DoobieUserRepo(transactor)
 
   doobieUserRepo
-    .add(User("Anthony", "Garo", new LocalDate(1988, 11, 21)))
+    .add(User("Anthony", "Garo2", new LocalDate(1988, 11, 21)))
       .flatMap(_ =>
         doobieUserRepo.getAll
       ).runOnComplete(println)
