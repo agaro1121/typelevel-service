@@ -20,6 +20,19 @@ libraryDependencies ++= Seq(
   "org.tpolecat" %% "doobie-postgres" % DoobieVersion
 )
 
+libraryDependencies += "joda-time" % "joda-time" % "2.9.9"
+
+libraryDependencies += "com.github.pureconfig" %% "pureconfig" % "0.9.0"
+
+//val MonixVersion = "2.3.3"
+val MonixVersion = "3.0.0-M3"
+libraryDependencies ++= Seq(
+  "io.monix" %% "monix" % MonixVersion
+//  "io.monix" %% "monix-eval" % MonixVersion,
+//  "io.monix" %% "monix-types" % MonixVersion,
+//  "io.monix" %% "monix-cats" % MonixVersion
+)
+
 /*
 * DB Migration
 * */
