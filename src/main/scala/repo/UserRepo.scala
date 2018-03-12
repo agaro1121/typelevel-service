@@ -2,10 +2,10 @@ package repo
 
 import models.User
 
-trait UserRepo {
+trait UserRepo[F[_]] {
 
-  def add(user: User): Boolean
-  def get(id: String): Either[Throwable, Option[User]]
-  def getAll: Vector[User]
+  def add(user: User): F[Boolean]
+  def get(id: String): F[Option[User]]
+  def getAll: F[Vector[User]]
 
 }
