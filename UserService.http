@@ -1,0 +1,19 @@
+###
+GET http://{{host}}:{{port}}/
+
+###
+GET http://{{host}}:{{port}}/users
+
+###
+GET http://{{host}}:{{port}}/users/Anthony3
+
+###
+POST http://{{host}}:{{port}}/users
+
+{
+  "firstName": "Anthony3",
+  "lastName": "Garo",
+  "birthday": "1988-11-21"
+}
+
+###

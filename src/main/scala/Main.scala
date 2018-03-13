@@ -25,16 +25,17 @@ object Main extends StreamApp[Task] {
   val userController: UserController[Task] = new UserController[Task](newUserService)
 
   val port = 9000
+  val host = "localhost"
 
   override def stream(args: List[String], requestShutdown: Task[Unit]): fs2.Stream[Task, StreamApp.ExitCode] = {
     BlazeBuilder[Task]
-      .bindHttp(port, "localhost")
+      .bindHttp(port, host)
       .mountService(UserRoutes(userController), "/users")
       .mountService(HealthCheck(), "/")
       .serve
   }
 
-  println(s"Running Server on port $port...")
+  println(s"Running Server at $host:$port...")
   println("Saluton Mondo!")
 
 }
