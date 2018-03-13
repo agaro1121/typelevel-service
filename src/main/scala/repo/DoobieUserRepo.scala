@@ -10,8 +10,8 @@ import Meta._
 
 class DoobieUserRepo[F[_]: Monad](xa: Transactor[F]) extends UserRepo[F] {
 
-  implicit val x: Meta[LocalDate] = DateMeta.xmap(
-    date => new LocalDate(date.getTime), //FIXME: 1988->3888
+  implicit val LocalDateMeta: Meta[LocalDate] = DateMeta.xmap(
+    date => new LocalDate(date.getTime),
     b => new java.sql.Date(b.getYear - 1900, b.getMonthOfYear, b.getDayOfMonth)
   )
 
@@ -22,9 +22,9 @@ class DoobieUserRepo[F[_]: Monad](xa: Transactor[F]) extends UserRepo[F] {
     result.map(n => n > 0)
   }
 
-  override def get(id: String): F[Option[User]] = sql"select * from users where first_name = $id".query[User].option.transact(xa)
+  override def get(id: String): F[Option[User]] =
+    sql"select * from users where first_name = $id".query[User].option.transact(xa)
 
-  override def getAll: F[Vector[User]] = sql"select * from users".query[User].to[Vector].transact(xa)
+  override def getAll: F[Vector[User]] =
+    sql"select * from users".query[User].to[Vector].transact(xa)
 }
-
-//sql"select code, name, population from country where name = $n".query[Country].option

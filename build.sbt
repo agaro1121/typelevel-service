@@ -11,8 +11,8 @@ libraryDependencies ++= Seq(
   "org.http4s"      %% "http4s-blaze-server" % Http4sVersion,
   "org.http4s"      %% "http4s-circe"        % Http4sVersion,
   "org.http4s"      %% "http4s-dsl"          % Http4sVersion
-//  "ch.qos.logback"  %  "logback-classic"     % LogbackVersion
 )
+libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.3"
 
 val DoobieVersion = "0.5.1"
 libraryDependencies ++= Seq(
@@ -32,6 +32,13 @@ libraryDependencies ++= Seq(
 //  "io.monix" %% "monix-types" % MonixVersion,
 //  "io.monix" %% "monix-cats" % MonixVersion
 )
+
+val CirceVersion = "0.9.1"
+libraryDependencies ++= Seq(
+  "io.circe" %% "circe-generic" % CirceVersion,
+  "io.circe" %% "circe-jawn" % CirceVersion
+)
+
 
 /*
 * DB Migration
