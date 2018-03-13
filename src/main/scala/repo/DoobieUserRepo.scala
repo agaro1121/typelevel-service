@@ -15,11 +15,9 @@ class DoobieUserRepo[F[_]: Monad](xa: Transactor[F]) extends UserRepo[F] {
     b => new java.sql.Date(b.getYear - 1900, b.getMonthOfYear, b.getDayOfMonth)
   )
 
-  override def add(user: User): F[Boolean] = {
+  override def add(user: User): F[Int] = {
     import user._
-    val result: F[Int] =
       sql"insert into users (first_name, last_name, birthday) values ($firstName, $lastName, $birthday)".update.run.transact(xa)
-    result.map(n => n > 0)
   }
 
   override def get(id: String): F[Option[User]] =

@@ -13,6 +13,7 @@ import models.User
 import org.http4s.dsl.Http4sDsl
 import circe._
 
+@Deprecated
 class Http4sUserService[F[_]: Monad: Sync](repo: UserRepo[F])
   extends Http4sDsl[F] with UserMarshallar {
 
