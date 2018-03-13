@@ -1,0 +1,64 @@
+{
+	"variables": [],
+	"info": {
+		"name": "User Service",
+		"_postman_id": "28147cab-0f5d-5c62-7c54-73e4d25030ae",
+		"description": "Testing typelevel-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "HelloWorld",
+			"request": {
+				"url": "http://localhost:9000",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9000/users",
+			"request": {
+				"url": "http://localhost:9000/users",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "show all users"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9000/users",
+			"request": {
+				"url": "http://localhost:9000/users",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstName\": \"Anthony\",\n\t\"lastName\": \"Garo\",\n\t\"birthday\": \"1988-11-21\"\n}"
+				},
+				"description": "Add new user"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9000/users/Anthony",
+			"request": {
+				"url": "http://localhost:9000/users/Anthony",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Get user by id(first name)"
+			},
+			"response": []
+		}
+	]
+}
